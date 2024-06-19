@@ -1,0 +1,27 @@
+name: Azure Web App Build
+
+on:
+  push:
+    branches: ["main"]
+
+  schedule:
+    - cron: '0 */1 * * *'
+      displayName: every hour
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: build
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v4.0.0 
+
+      - name: Retore dependencies
+        run: dotnet restore **/*.csproj
+
+      - name: build
+        run: dotnet build **/*.csproj --no-restore
+

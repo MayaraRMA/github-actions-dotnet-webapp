@@ -4,9 +4,9 @@ on:
   push:
     branches: ["main"]
 
-  schedule:
-    - cron: '0 */1 * * *'
-      displayName: every hour
+# schedule:
+#  - cron: '0 */1 * * *'
+#    displayName: every hour
 
 jobs:
   build:
